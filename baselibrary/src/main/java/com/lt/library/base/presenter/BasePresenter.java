@@ -37,15 +37,29 @@ public abstract class BasePresenter
     public void attatch(T t) {
         super.attatch(t);
         configHelper();
+        if (mAnimatorHelper != null)
+            mAnimatorHelper.attatch(this);
+        if (mWindowHelper != null)
+            mWindowHelper.attatch(this);
         if (mModel == null)
             createModel();
+    }
+
+    @Override
+    public void dettatch() {
+        super.dettatch();
+        if (mAnimatorHelper != null)
+            mAnimatorHelper.dettatch();
+        if (mWindowHelper != null)
+            mWindowHelper.dettatch();
+        if (mModel != null)
+            mModel.release();
     }
 
     /**
      * 配置当前view对象的辅助动画、弹窗
      */
-    @Override
-    public void configHelper() {
+    protected void configHelper() {
 
     }
 

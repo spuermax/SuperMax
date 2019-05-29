@@ -14,5 +14,4 @@ public interface IBasePresenter<T extends IBaseView> extends IAbstractBasePresen
 
     void onPause();
 
-    void configHelper();
 }

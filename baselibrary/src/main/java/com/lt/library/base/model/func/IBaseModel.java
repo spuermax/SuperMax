@@ -7,4 +7,5 @@ package com.lt.library.base.model.func;
  * Time: 14:34
  */
 public interface IBaseModel extends IAbstractBaseModel {
+    void release();
 }

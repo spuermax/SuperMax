@@ -11,11 +11,7 @@ import com.lt.library.base.view.func.IAbstractBaseView;
  * Date: 2019-05-29
  * Time: 14:29
  */
-public interface IAbstractBasePresenter<T extends IAbstractBaseView> {
-    void attatch(T t);
-
-    void dettatch();
-
+public interface IAbstractBasePresenter{
     void showMsg(CharSequence msg);
 
     void showLongMsg(CharSequence msg);
@@ -35,4 +31,6 @@ public interface IAbstractBasePresenter<T extends IAbstractBaseView> {
     void loading(AlertDialog alertDialog);
 
     void loading(android.app.AlertDialog alertDialog);
+
+    void configTransition();
 }

@@ -1,7 +1,6 @@
 package com.lt.library.base.view;
 
-import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
 
 import com.lt.library.base.presenter.func.IBasePresenter;
 import com.lt.library.base.view.func.IBaseView;
@@ -11,46 +10,14 @@ import com.lt.library.base.view.func.IBaseView;
  * Date: 2019-05-29
  * Time: 15:58
  */
-public class BaseView<T,S extends IBasePresenter> extends AbstractBaseView<T,S> implements IBaseView<T> {
+public abstract class BaseView<T extends IBasePresenter> extends AbstractBaseView<T> implements IBaseView<T> {
     @Override
-    public void onResume() {
-        Log.d(TAG, "onResume: ");
-        if (mPresenter != null)
-            mPresenter.onResume();
+    public void attatch(View contentView, T mPresenter) {
+        super.attatch(contentView, mPresenter);
+        initView();
+        initListener();
     }
-
-    @Override
-    public void onStart() {
-        Log.d(TAG, "onStart: ");
-        if (mPresenter != null)
-            mPresenter.onStart();
-    }
-
-    @Override
-    public void onStop() {
-        Log.d(TAG, "onStop: ");
-        if (mPresenter != null)
-            mPresenter.onStop();
-    }
-
-    @Override
-    public void onPause() {
-        Log.d(TAG, "onPause: ");
-        if (mPresenter != null)
-            mPresenter.onPause();
-    }
-
-    @Override
-    public void onSaveState(Bundle saveState) {
-        Log.d(TAG, "onSaveState: ");
-        if (mPresenter != null)
-            mPresenter.onSaveState(saveState);
-    }
-
-    @Override
-    public void onRestoreState(Bundle restoreState) {
-        Log.d(TAG, "onRestoreState: ");
-        if (mPresenter != null)
-            mPresenter.onRestoreState(restoreState);
-    }
+    protected abstract void initListener();
+    protected abstract void initView();
+    protected abstract void destoryView();
 }

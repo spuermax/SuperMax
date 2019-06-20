@@ -10,18 +10,7 @@ import com.lt.library.base.view.func.IBaseView;
  * Date: 2019-05-29
  * Time: 14:29
  */
-public interface IBasePresenter<T extends IBaseView> extends IAbstractBasePresenter<T> {
+public interface IBasePresenter extends IAbstractBasePresenter {
 
-    void onResume();
-
-    void onStart();
-
-    void onStop();
-
-    void onPause();
-
-    void onSaveState(Bundle saveState);
-
-    void onRestoreState(Bundle restoreState);
 
 }

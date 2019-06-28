@@ -1,5 +1,7 @@
 package com.lt.library.base.presenter.func;
 
+import android.os.Bundle;
+
 import com.lt.library.base.view.func.IBaseView;
 
 /**
@@ -8,10 +10,7 @@ import com.lt.library.base.view.func.IBaseView;
  * Date: 2019-05-29
  * Time: 14:29
  */
-public interface IBasePresenter<T extends IBaseView> extends IAbstractBasePresenter<T> {
+public interface IBasePresenter extends IAbstractBasePresenter {
 
-    void onResume();
-
-    void onPause();
 
 }

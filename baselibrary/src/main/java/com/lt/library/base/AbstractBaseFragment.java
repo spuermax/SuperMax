@@ -1,27 +1,57 @@
-package com.lt.library.base.presenter;
+package com.lt.library.base;
+
 import android.app.Dialog;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 
-import com.blankj.utilcode.util.ActivityUtils;
-import com.blankj.utilcode.util.ResourceUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.lt.library.base.presenter.func.IAbstractBasePresenter;
 import com.lt.library.base.view.func.IAbstractBaseView;
+import com.lt.library.utils.ReflectUtils;
 
 /**
  * Created by Android Studio.
  * User: master
- * Date: 2019-05-29
- * Time: 14:52
+ * Date: 2019-06-05
+ * Time: 10:47
  */
-public class AbstractBasePresenter<T extends IAbstractBaseView> implements IAbstractBasePresenter {
+public class AbstractBaseFragment<T extends IAbstractBaseView> extends Fragment
+        implements IAbstractBasePresenter {
     protected T mView;
-    protected final String TAG ;
+    protected View contentView;
+    protected final String TAG;
+
     {
         String simpleName = getClass().getSimpleName();
         int length = simpleName.length();
         TAG = length >= 20 ? simpleName.substring(length - 20) : simpleName;
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        mView = createView();
+        if (mView != null)
+            contentView = mView.attatch(inflater, container,this);
+        return contentView;
+    }
+
+    protected T createView() {
+        return ReflectUtils.createFromParameter(0, getClass());
+    }
+
+    @Override
+    public void onDestroyView() {
+        if (mView != null)
+            mView.dettatch();
+        super.onDestroyView();
     }
 
     @Override
@@ -46,12 +76,12 @@ public class AbstractBasePresenter<T extends IAbstractBaseView> implements IAbst
 
     @Override
     public void showMsg(int msgRes) {
-        showMsg(ActivityUtils.getTopActivity().getString(msgRes));
+        showMsg(getString(msgRes));
     }
 
     @Override
     public void showLongMsg(int msgRes) {
-        showLongMsg(ActivityUtils.getTopActivity().getString(msgRes));
+        showLongMsg(getString(msgRes));
     }
 
     @Override
@@ -87,7 +117,7 @@ public class AbstractBasePresenter<T extends IAbstractBaseView> implements IAbst
     }
 
     /**
-     * 配置转场动画
+     * 配置转场动画  转场动画只有replease stack时可用
      */
     @Override
     public void configTransition() {

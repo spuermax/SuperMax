@@ -1,7 +1,9 @@
 package com.lt.library.base;
 
+
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
 
 import com.lt.library.base.model.func.IBaseModel;
 import com.lt.library.base.presenter.func.IBasePresenter;

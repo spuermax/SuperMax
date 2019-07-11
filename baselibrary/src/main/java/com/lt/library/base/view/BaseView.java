@@ -1,5 +1,6 @@
 package com.lt.library.base.view;
 
+
 import android.view.View;
 
 import com.lt.library.base.presenter.func.IBasePresenter;
@@ -17,6 +18,13 @@ public abstract class BaseView<T extends IBasePresenter> extends AbstractBaseVie
         initView();
         initListener();
     }
+
+    @Override
+    public void dettatch() {
+        destoryView();
+        super.dettatch();
+    }
+
     protected abstract void initListener();
     protected abstract void initView();
     protected abstract void destoryView();

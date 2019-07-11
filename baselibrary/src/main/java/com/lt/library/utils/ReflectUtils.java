@@ -1,7 +1,9 @@
 package com.lt.library.utils;
 
-import android.support.annotation.NonNull;
+
 import android.util.Log;
+
+import androidx.annotation.NonNull;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;

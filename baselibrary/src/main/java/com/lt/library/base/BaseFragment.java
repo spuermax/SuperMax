@@ -1,11 +1,14 @@
 package com.lt.library.base;
 
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityOptionsCompat;
 
 import com.lt.library.base.model.func.IBaseModel;
 import com.lt.library.base.presenter.func.IBasePresenter;
@@ -37,4 +40,43 @@ implements IBasePresenter {
     protected S createModel() {
         return ReflectUtils.createFromParameter(1,getClass());
     }
+
+    protected void jump(Class<? extends Activity> to) {
+        jump(to, false);
+    }
+
+    protected void jump(Class<? extends Activity> to, boolean finish) {
+        Intent intent = new Intent(getContext(), to);
+        jump(intent,finish);
+    }
+
+    protected void jump(Intent to) {
+        jump(to, false);
+    }
+    protected Bundle finishTransition(){
+        return ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity()).toBundle();
+    }
+    protected void jump(Intent to, boolean finish) {
+        Bundle bundle = finishTransition();
+        if (bundle == null) {
+            startActivity(to);
+            if (finish)
+                getActivity().finish();
+            return;
+        }
+        startActivity(to,bundle);
+        if (finish)
+            getActivity().finishAfterTransition();
+    }
+
+    protected void jump(String action) {
+        jump(action, false);
+    }
+
+    protected void jump(String action, boolean finish) {
+        Intent intent = new Intent();
+        intent.setAction(action);
+        jump(intent,finish);
+    }
+
 }

@@ -1,10 +1,11 @@
 package com.lt.library.base.presenter;
+
 import android.app.Dialog;
-import android.support.v7.app.AlertDialog;
 import android.view.Window;
 
+import androidx.appcompat.app.AlertDialog;
+
 import com.blankj.utilcode.util.ActivityUtils;
-import com.blankj.utilcode.util.ResourceUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.lt.library.base.presenter.func.IAbstractBasePresenter;
 import com.lt.library.base.view.func.IAbstractBaseView;

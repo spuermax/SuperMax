@@ -1,7 +1,9 @@
 package com.lt.library.utils.gson;
 
-import android.support.annotation.Nullable;
+
 import android.util.Log;
+
+import androidx.annotation.Nullable;
 
 import com.blankj.utilcode.util.StringUtils;
 import com.google.gson.Gson;

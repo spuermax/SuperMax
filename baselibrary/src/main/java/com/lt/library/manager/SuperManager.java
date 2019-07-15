@@ -1,8 +1,8 @@
 package com.lt.library.manager;
 
+
 import android.app.Application;
 
-import com.blankj.utilcode.util.CrashUtils;
 import com.blankj.utilcode.util.Utils;
 
 /**

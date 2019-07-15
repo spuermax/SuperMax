@@ -4,10 +4,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.HandlerThread;
-import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -16,14 +12,15 @@ import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
-import com.blankj.utilcode.util.CloseUtils;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.FragmentActivity;
+
 import com.blankj.utilcode.util.ToastUtils;
 import com.lt.library.base.presenter.func.IAbstractBasePresenter;
 import com.lt.library.base.view.func.IAbstractBaseView;
 import com.lt.library.utils.ReflectUtils;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintWriter;
 
 /**
  * Created by Android Studio.
@@ -42,7 +39,6 @@ implements IAbstractBasePresenter {
         String simpleName = getClass().getSimpleName();
         int length = simpleName.length();
         TAG = length <= 20 ? simpleName : simpleName.substring(length - 20);
-
     }
 
     @Override
@@ -50,6 +46,8 @@ implements IAbstractBasePresenter {
         super.onPostCreate(savedInstanceState);
         Log.d(TAG, "onPostCreate: ");
         mView = createView();
+        Thread thread = getMainLooper().getThread();
+        thread.start();
         mainHandler = new Handler(getMainLooper());
         if (mView != null)
             setContentView(mView.attatch(getLayoutInflater(), null,this));

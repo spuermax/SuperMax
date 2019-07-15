@@ -1,7 +1,5 @@
 package com.lt.library.base.view.func;
 
-import android.os.Bundle;
-
 import com.lt.library.base.presenter.func.IBasePresenter;
 
 /**

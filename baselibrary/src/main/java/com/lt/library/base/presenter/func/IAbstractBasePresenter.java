@@ -1,9 +1,9 @@
 package com.lt.library.base.presenter.func;
 
-import android.app.Dialog;
-import android.support.v7.app.AlertDialog;
 
-import com.lt.library.base.view.func.IAbstractBaseView;
+import android.app.Dialog;
+
+import androidx.appcompat.app.AlertDialog;
 
 /**
  * Created by Android Studio.

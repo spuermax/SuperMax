@@ -1,27 +1,17 @@
 package com.lt.library.base.view;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.os.Handler;
-import android.os.HandlerThread;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.blankj.utilcode.util.CloseUtils;
 import com.lt.library.base.presenter.func.IAbstractBasePresenter;
 import com.lt.library.base.view.func.IAbstractBaseView;
-import com.lt.library.utils.ReflectUtils;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintWriter;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import dalvik.system.DexClassLoader;
-import dalvik.system.PathClassLoader;
 
 /**
  * Created by Android Studio.
@@ -59,7 +49,7 @@ public abstract class AbstractBaseView<T extends IAbstractBasePresenter> impleme
     }
 
     @Override
-    public View attatch(LayoutInflater inflater, ViewGroup rootGroup,T mPresenter) {
+    public View attatch(LayoutInflater inflater, ViewGroup rootGroup, T mPresenter) {
         Log.d(TAG, "attatch: ");
         View inflate = inflater.inflate(layoutId(), rootGroup, false);
         attatch(inflate,mPresenter);

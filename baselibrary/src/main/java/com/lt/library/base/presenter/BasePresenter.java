@@ -1,5 +1,6 @@
 package com.lt.library.base.presenter;
 
+
 import android.util.Log;
 
 import com.lt.library.base.model.func.IBaseModel;

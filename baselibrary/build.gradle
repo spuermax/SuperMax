@@ -27,4 +27,9 @@ dependencies {
     api 'androidx.annotation:annotation:1.0.2'
     //butterknife
     implementation 'com.jakewharton:butterknife:8.8.1'
+
+    api 'com.squareup.retrofit2:retrofit:2.4.0'
+    api 'com.squareup.retrofit2:converter-gson:2.4.0'
+
+
 }
